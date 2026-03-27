@@ -17,8 +17,8 @@ typedef int32_t i32;
 
 typedef struct {
   u32 id;
-  char username[COLUMN_SIZE_S];
-  char email[COLUMN_SIZE_S];
+  char username[COLUMN_SIZE_S + 1];
+  char email[COLUMN_SIZE_L + 1];
 } Row;
 
 void print_row(Row* row) {
@@ -194,11 +194,11 @@ ExecuteResult execute_insert(Statement* statement, Table* table) {
 ExecuteResult execute_statement(Statement *statement, Table* table) {
   switch (statement->type) {
   case (STATEMENT_INSERT):
-    printf("Insert!!!!.\n");
+    //printf("Executed.\n");
     return execute_insert(statement, table);
 
   case (STATEMENT_SELECT):
-    printf("Select!!!.\n");
+    //printf("Executed.\n");
     return execute_select(statement, table);
     break;
   }
